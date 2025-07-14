@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web - API Consumer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Simple Web App</h1>
+            <p>Consumiendo datos de una API pública</p>
+        </header>
+
+        <main>
+            <section class="api-section">
+                <h2>📊 Datos de Usuarios</h2>
+                <button id="loadUsers" class="btn-primary">Cargar Usuarios</button>
+                <div id="loading" class="loading hidden">Cargando...</div>
+                <div id="usersList" class="users-list"></div>
+            </section>
+
+            <section class="api-section">
+                <h2>🎯 Datos Aleatorios</h2>
+                <button id="loadRandomData" class="btn-secondary">Obtener Dato Aleatorio</button>
+                <div id="randomData" class="random-data"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Desarrollado con ❤️ usando JavaScript vanilla</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
