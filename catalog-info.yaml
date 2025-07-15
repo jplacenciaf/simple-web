@@ -1,1 +1,85 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-web
+  description: "Una aplicación web simple y elegante que consume APIs públicas para mostrar datos dinámicos"
+  annotations:
+    github.com/project-slug: jplacenciaf/simple-web
+    backstage.io/source-location: url:https://github.com/jplacenciaf/simple-web
+  tags:
+    - frontend
+    - web
+    - api-consumer
+    - javascript
+    - html
+    - css
+  links:
+    - url: https://jplacenciaf.github.io/simple-web/
+      title: Demo en Vivo
+      icon: web
+    - url: https://github.com/jplacenciaf/simple-web
+      title: Código Fuente
+      icon: github
+spec:
+  type: website
+  lifecycle: experimental
+  owner: jplacenciaf
+  system: web-applications
+  consumesApis:
+    - jsonplaceholder-api
+    - quotable-api
+  
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: jsonplaceholder-api
+  description: "API REST gratuita para pruebas y prototipos"
+  tags:
+    - rest
+    - testing
+    - mock
+spec:
+  type: openapi
+  lifecycle: production
+  owner: external
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: JSONPlaceholder API
+      version: 1.0.0
+    servers:
+      - url: https://jsonplaceholder.typicode.com
+    paths:
+      /users:
+        get:
+          summary: Obtiene lista de usuarios
+      /posts:
+        get:
+          summary: Obtiene lista de posts
 
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: quotable-api
+  description: "API para obtener citas inspiracionales aleatorias"
+  tags:
+    - rest
+    - quotes
+    - random
+spec:
+  type: openapi
+  lifecycle: production
+  owner: external
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Quotable API
+      version: 1.0.0
+    servers:
+      - url: https://api.quotable.io
+    paths:
+      /random:
+        get:
+          summary: Obtiene una cita aleatoria
