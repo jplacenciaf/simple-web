@@ -1,1 +1,112 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-web
+  title: Simple Web - API Consumer
+  description: Una aplicación web simple y elegante que consume APIs públicas para mostrar datos dinámicos
+  annotations:
+    github.com/project-slug: jplacenciaf/simple-web
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - web
+    - frontend
+    - api-consumer
+    - javascript
+    - html
+    - css
+  links:
+    - url: https://jplacenciaf.github.io/simple-web/
+      title: Demo en Vivo
+      icon: web
+    - url: https://github.com/jplacenciaf/simple-web
+      title: Código Fuente
+      icon: github
+spec:
+  type: website
+  lifecycle: experimental
+  owner: jplacenciaf
+  system: web-applications
+  consumesApis:
+    - jsonplaceholder-api
+    - quotable-api
+  dependsOn:
+    - component:jsonplaceholder-api
+    - component:quotable-api
 
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: jsonplaceholder-api
+  title: JSONPlaceholder API
+  description: API pública para obtener datos de usuarios y posts de prueba
+  tags:
+    - external-api
+    - json
+    - rest
+spec:
+  type: openapi
+  lifecycle: production
+  owner: external
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: JSONPlaceholder API
+      version: 1.0.0
+      description: API pública para datos de prueba
+    servers:
+      - url: https://jsonplaceholder.typicode.com
+    paths:
+      /users:
+        get:
+          summary: Obtener lista de usuarios
+          responses:
+            '200':
+              description: Lista de usuarios exitosa
+      /posts:
+        get:
+          summary: Obtener lista de posts
+          responses:
+            '200':
+              description: Lista de posts exitosa
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: quotable-api
+  title: Quotable API
+  description: API pública para obtener citas inspiracionales aleatorias
+  tags:
+    - external-api
+    - quotes
+    - rest
+spec:
+  type: openapi
+  lifecycle: production
+  owner: external
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Quotable API
+      version: 1.0.0
+      description: API para citas inspiracionales
+    servers:
+      - url: https://api.quotable.io
+    paths:
+      /random:
+        get:
+          summary: Obtener cita aleatoria
+          responses:
+            '200':
+              description: Cita aleatoria exitosa
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: web-applications
+  title: Aplicaciones Web
+  description: Sistema que agrupa todas las aplicaciones web frontend
+spec:
+  owner: jplacenciaf
