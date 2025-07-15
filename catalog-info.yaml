@@ -1,1 +1,38 @@
-
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-web
+  title: Simple Web Application
+  description: Una aplicación web simple con HTML, CSS y JavaScript
+  tags:
+    - frontend
+    - web
+    - javascript
+    - html
+    - css
+  annotations:
+    github.com/project-slug: jplacenciaf/simple-web
+    backstage.io/source-location: url:https://github.com/jplacenciaf/simple-web
+spec:
+  type: website
+  lifecycle: development
+  owner: jplacenciaf
+  system: web-applications
+  dependsOn:
+    - resource:web-hosting
+  providesApis: []
+  consumesApis: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: web-hosting
+  title: Web Hosting Environment
+  description: Entorno de hosting para la aplicación web
+  tags:
+    - hosting
+    - infrastructure
+spec:
+  type: hosting
+  owner: jplacenciaf
+  system: web-applications
