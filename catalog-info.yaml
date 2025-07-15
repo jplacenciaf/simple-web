@@ -1,1 +1,67 @@
+Perfecto! He revisado tu repositorio simple-web y veo que tienes un archivo catalog-info.yaml vacío. Basándome en la información del README.md, he identificado que es una aplicación web que consume APIs públicas (JSONPlaceholder y Quotable).
 
+Aquí está el contenido propuesto para tu catalog-info.yaml:
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-web
+  description: "Una aplicación web simple y elegante que consume APIs públicas para mostrar datos dinámicos"
+  annotations:
+    github.com/project-slug: jplacenciaf/simple-web
+    backstage.io/source-location: url:https://github.com/jplacenciaf/simple-web
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - web
+    - frontend
+    - javascript
+    - api-consumer
+    - responsive
+  links:
+    - url: https://jplacenciaf.github.io/simple-web/
+      title: Demo en Vivo
+      icon: web
+spec:
+  type: website
+  lifecycle: production
+  owner: jplacenciaf
+  system: web-applications
+  providesApis: []
+  consumesApis:
+    - jsonplaceholder-api
+    - quotable-api
+  dependsOn:
+    - resource:jsonplaceholder-typicode
+    - resource:quotable-api-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: jsonplaceholder-typicode
+  description: "JSONPlaceholder API para datos de prueba"
+spec:
+  type: api
+  owner: jplacenciaf
+  system: external-apis
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: quotable-api-service
+  description: "Quotable API para citas inspiracionales"
+spec:
+  type: api
+  owner: jplacenciaf
+  system: external-apis
+
+¿Te gustaría que modifique el archivo catalog-info.yaml con este contenido? Este archivo incluye:
+
+1. **Componente principal**: Define tu aplicación web con toda la metadata relevante
+2. **Recursos externos**: Define las APIs que consume tu aplicación
+3. **Etiquetas**: Para facilitar la búsqueda y categorización
+4. **Enlaces**: Incluye el link al demo en vivo
+5. **Dependencias**: Especifica las APIs que utiliza
+
+¿Procedo con esta estructura o quieres que haga algún ajuste?
