@@ -1,1 +1,41 @@
-
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-web
+  title: Simple Web Application
+  description: Una aplicación web simple construida con HTML, CSS y JavaScript vanilla
+  annotations:
+    github.com/project-slug: jplacenciaf/simple-web
+    backstage.io/source-location: url:https://github.com/jplacenciaf/simple-web
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - frontend
+    - web
+    - javascript
+    - html
+    - css
+    - static-site
+  links:
+    - url: https://github.com/jplacenciaf/simple-web
+      title: Repositorio GitHub
+      icon: github
+    - url: https://jplacenciaf.github.io/simple-web
+      title: Aplicación en vivo
+      icon: web
+spec:
+  type: website
+  lifecycle: production
+  owner: jplacenciaf
+  system: web-applications
+  providesApis: []
+  consumesApis: []
+  dependsOn: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: web-applications
+  title: Web Applications System
+  description: Sistema que agrupa todas las aplicaciones web frontend
+spec:
+  owner: jplacenciaf
