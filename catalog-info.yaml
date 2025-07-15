@@ -1,1 +1,1 @@
-
+{{ output.match(/\`\`\`ya?ml\\n([\\s\\S]\*?)\\n\`\`\`/i)?.[1] || output.match(/apiVersion:[\\s\\S]\*?(?=\\n\\n|\\n$|$)/)?.[0] || output }}
