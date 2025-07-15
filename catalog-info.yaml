@@ -1,1 +1,95 @@
+Excelente! Ahora tengo toda la información necesaria sobre tu proyecto. Basándome en el contenido del README.md y la estructura del repositorio, he identificado que "simple-web" es una aplicación web que consume APIs públicas para mostrar datos dinámicos.
 
+## Estado Actual
+Tu archivo `catalog-info.yaml` existe pero está prácticamente vacío. 
+
+## Propuesta de catalog-info.yaml
+
+Basándome en la información de tu proyecto, te propongo el siguiente contenido para tu archivo catalog-info.yaml:
+
+**¿Deseas que proceda con esta estructura para tu catalog-info.yaml?**
+
+```yaml
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-web
+  description: "Una aplicación web simple y elegante que consume APIs públicas para mostrar datos dinámicos"
+  annotations:
+    github.com/project-slug: jplacenciaf/simple-web
+    backstage.io/source-location: url:https://github.com/jplacenciaf/simple-web
+spec:
+  type: website
+  lifecycle: production
+  owner: jplacenciaf
+  system: web-applications
+  providesApis: []
+  consumesApis:
+    - jsonplaceholder-api
+    - quotable-api
+  dependsOn: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: jsonplaceholder-api
+  description: "API de JSONPlaceholder para datos de usuarios y posts"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: external
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: JSONPlaceholder API
+      version: 1.0.0
+      description: Fake REST API for testing and prototyping
+    servers:
+      - url: https://jsonplaceholder.typicode.com
+    paths:
+      /users:
+        get:
+          summary: Get all users
+          responses:
+            '200':
+              description: List of users
+      /posts:
+        get:
+          summary: Get all posts
+          responses:
+            '200':
+              description: List of posts
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: quotable-api
+  description: "API de Quotable para citas inspiracionales aleatorias"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: external
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Quotable API
+      version: 1.0.0
+      description: A free, open source quotations API
+    servers:
+      - url: https://api.quotable.io
+    paths:
+      /random:
+        get:
+          summary: Get random quote
+          responses:
+            '200':
+              description: Random quote
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: web-applications
+  description: "Sistema de aplicaciones web frontend"
+spec:
+  owner: jplacenciaf
+```
