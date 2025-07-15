@@ -1,1 +1,29 @@
-
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: simple-web
+  description: Simple web application
+  annotations:
+    github.com/project-slug: jplacenciaf/simple-web
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - web
+    - frontend
+    - javascript
+  links:
+    - url: https://github.com/jplacenciaf/simple-web
+      title: GitHub Repository
+      icon: github
+spec:
+  type: website
+  lifecycle: experimental
+  owner: jplacenciaf
+  system: web-platform
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: web-platform
+  description: Web platform system
+spec:
+  owner: jplacenciaf
